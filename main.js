@@ -71,6 +71,7 @@ function setTheme(theme) {
     document.documentElement.setAttribute('data-theme', theme);
     localStorage.setItem(storageKeys.theme, theme);
     updateToggleLabels();
+    reloadDisqus(theme);
 }
 
 function setLanguage(lang) {
@@ -157,3 +158,27 @@ function drawNumbers() {
 }
 
 initPreferences();
+
+function loadDisqus(theme) {
+    const disqusThread = document.getElementById('disqus_thread');
+    if (!disqusThread) return;
+
+    disqusThread.innerHTML = '';
+
+    const script = document.createElement('script');
+    script.src = 'https://bluedragon-test1.disqus.com/embed.js';
+    script.setAttribute('data-timestamp', +new Date());
+    script.setAttribute('data-theme', theme === 'dark' ? 'dark' : 'light');
+    script.id = 'disqus-embed';
+    (document.head || document.body).appendChild(script);
+}
+
+function reloadDisqus(theme) {
+    const existingScript = document.getElementById('disqus-embed');
+    if (existingScript) {
+        existingScript.remove();
+    }
+    loadDisqus(theme);
+}
+
+loadDisqus(document.documentElement.getAttribute('data-theme') || 'dark');
