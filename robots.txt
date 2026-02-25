@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://1-4sy.pages.dev/sitemap.xml
