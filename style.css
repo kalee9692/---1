@@ -264,4 +264,13 @@ h1 {
 
 #disqus_thread {
     margin-top: 1.2rem;
+    color: #1f1b16;
+}
+
+html[data-theme="dark"] #disqus_thread {
+    color: #e6e6e6;
+}
+
+#disqus_thread a {
+    color: var(--link);
 }
