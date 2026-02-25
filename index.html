@@ -53,7 +53,22 @@
                 <button class="contact-submit" type="submit" data-i18n="contactSubmit">Send Inquiry</button>
             </form>
         </section>
+        <section class="comments" aria-labelledby="comments-title">
+            <h2 id="comments-title" data-i18n="commentsTitle">Comments</h2>
+            <div id="disqus_thread"></div>
+        </section>
     </div>
+    <script>
+        (function() {
+            var d = document, s = d.createElement('script');
+            s.src = 'https://bluedragon-test1.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+    </script>
+    <noscript>
+        Please enable JavaScript to view the comments powered by Disqus.
+    </noscript>
     <script src="main.js"></script>
 </body>
 </html>

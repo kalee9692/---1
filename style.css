@@ -244,3 +244,15 @@ h1 {
 .contact-submit:hover {
     background-color: var(--button-hover);
 }
+
+.comments {
+    margin-top: 2.5rem;
+    padding: 1.75rem;
+    border-radius: 18px;
+    background-color: var(--panel);
+    border: 1px solid var(--panel-border);
+}
+
+#disqus_thread {
+    margin-top: 1.2rem;
+}
