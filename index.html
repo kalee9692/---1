@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,13 +8,17 @@
 </head>
 <body>
     <div class="container">
-        <h1>Lotto Number Drawer</h1>
+        <div class="toolbar">
+            <button id="theme-toggle" type="button"></button>
+            <button id="lang-toggle" type="button"></button>
+        </div>
+        <h1 data-i18n="title">Lotto Number Drawer</h1>
         <div class="machine">
             <div class="ball-container"></div>
         </div>
-        <button id="draw-button">Draw Numbers</button>
+        <button id="draw-button" data-i18n="draw">Draw Numbers</button>
         <div class="result">
-            <h2>Winning Numbers</h2>
+            <h2 data-i18n="winning">Winning Numbers</h2>
             <div class="numbers">
                 <div class="number-group">
                     <span class="number"></span>

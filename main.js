@@ -2,9 +2,88 @@ const drawButton = document.getElementById('draw-button');
 const numberSpans = document.querySelectorAll('.number-group .number');
 const bonusSpan = document.querySelector('.bonus-group .bonus');
 const ballContainer = document.querySelector('.ball-container');
+const themeToggle = document.getElementById('theme-toggle');
+const langToggle = document.getElementById('lang-toggle');
+
+const translations = {
+    en: {
+        title: 'Lotto Number Drawer',
+        draw: 'Draw Numbers',
+        winning: 'Winning Numbers',
+        themeToDark: 'Switch to Dark',
+        themeToLight: 'Switch to Light',
+        langToKo: '한국어',
+        langToEn: 'English'
+    },
+    ko: {
+        title: '로또 번호 추첨기',
+        draw: '번호 추첨',
+        winning: '당첨 번호',
+        themeToDark: '다크 모드',
+        themeToLight: '화이트 모드',
+        langToKo: '한국어',
+        langToEn: 'English'
+    }
+};
+
+const storageKeys = {
+    theme: 'lottoTheme',
+    lang: 'lottoLang'
+};
+
+function applyTranslations(lang) {
+    const dict = translations[lang] || translations.en;
+    document.querySelectorAll('[data-i18n]').forEach((el) => {
+        const key = el.getAttribute('data-i18n');
+        if (dict[key]) {
+            el.textContent = dict[key];
+        }
+    });
+    document.documentElement.lang = lang;
+}
+
+function updateToggleLabels() {
+    const currentTheme = document.documentElement.getAttribute('data-theme') || 'dark';
+    const currentLang = document.documentElement.lang || 'en';
+    const dict = translations[currentLang] || translations.en;
+
+    themeToggle.textContent = currentTheme === 'dark' ? dict.themeToLight : dict.themeToDark;
+    langToggle.textContent = currentLang === 'ko' ? dict.langToEn : dict.langToKo;
+}
+
+function setTheme(theme) {
+    document.documentElement.setAttribute('data-theme', theme);
+    localStorage.setItem(storageKeys.theme, theme);
+    updateToggleLabels();
+}
+
+function setLanguage(lang) {
+    localStorage.setItem(storageKeys.lang, lang);
+    applyTranslations(lang);
+    updateToggleLabels();
+}
+
+function initPreferences() {
+    const savedTheme = localStorage.getItem(storageKeys.theme);
+    const savedLang = localStorage.getItem(storageKeys.lang);
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+    setTheme(savedTheme || (prefersDark ? 'dark' : 'light'));
+    setLanguage(savedLang || 'en');
+}
 
 drawButton.addEventListener('click', () => {
     drawNumbers();
+});
+
+themeToggle.addEventListener('click', () => {
+    const currentTheme = document.documentElement.getAttribute('data-theme') || 'dark';
+    setTheme(currentTheme === 'dark' ? 'light' : 'dark');
+});
+
+langToggle.addEventListener('click', () => {
+    const currentLang = document.documentElement.lang || 'en';
+    setLanguage(currentLang === 'ko' ? 'en' : 'ko');
 });
 
 function createBall(number) {
@@ -60,3 +139,5 @@ function drawNumbers() {
         ballContainer.innerHTML = '';
     }, 3000); // Wait for 3 seconds for the animation to run
 }
+
+initPreferences();
