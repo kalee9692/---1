@@ -33,6 +33,26 @@
                 </div>
             </div>
         </div>
+        <section class="contact" aria-labelledby="contact-title">
+            <h2 id="contact-title" data-i18n="contactTitle">Partnership Inquiry</h2>
+            <p class="contact-subtitle" data-i18n="contactSubtitle">Leave your details and message. We will get back to you.</p>
+            <form class="contact-form" action="https://formspree.io/f/mgolrnbp" method="POST">
+                <input type="hidden" name="_subject" value="New partnership inquiry" />
+                <label class="field">
+                    <span data-i18n="contactNameLabel">Name</span>
+                    <input type="text" name="name" autocomplete="name" required />
+                </label>
+                <label class="field">
+                    <span data-i18n="contactEmailLabel">Email</span>
+                    <input type="email" name="email" autocomplete="email" required />
+                </label>
+                <label class="field">
+                    <span data-i18n="contactMessageLabel">Message</span>
+                    <textarea name="message" rows="4" required></textarea>
+                </label>
+                <button class="contact-submit" type="submit" data-i18n="contactSubmit">Send Inquiry</button>
+            </form>
+        </section>
     </div>
     <script src="main.js"></script>
 </body>
