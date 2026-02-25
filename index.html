@@ -1,14 +1,35 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Hello World</title>
-  <link href='/style.css' rel='stylesheet'>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lotto Number Drawer</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1>Hello, world!</h1>
-  <button onclick="console.log('hello');">Press me</button>
-  <script defer type="text/javascript" src="/main.js"></script>
+    <div class="container">
+        <h1>Lotto Number Drawer</h1>
+        <div class="machine">
+            <div class="ball-container"></div>
+        </div>
+        <button id="draw-button">Draw Numbers</button>
+        <div class="result">
+            <h2>Winning Numbers</h2>
+            <div class="numbers">
+                <div class="number-group">
+                    <span class="number"></span>
+                    <span class="number"></span>
+                    <span class="number"></span>
+                    <span class="number"></span>
+                    <span class="number"></span>
+                    <span class="number"></span>
+                </div>
+                <div class="bonus-group">
+                    <span class="number bonus"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="main.js"></script>
 </body>
 </html>
