@@ -70,6 +70,33 @@ h1 {
     justify-content: center;
 }
 
+.content {
+    margin-top: 2.5rem;
+    text-align: left;
+    background-color: var(--panel);
+    border: 1px solid var(--panel-border);
+    border-radius: 18px;
+    padding: 2rem;
+}
+
+.content-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.content-card {
+    background-color: var(--bg);
+    border: 1px solid var(--panel-border);
+    border-radius: 14px;
+    padding: 1rem;
+}
+
+.content-card h3 {
+    margin-top: 0;
+}
+
 .toolbar button:hover,
 .nav-link:hover {
     background-color: var(--panel);
@@ -260,6 +287,20 @@ h1 {
     border-radius: 18px;
     background-color: var(--panel);
     border: 1px solid var(--panel-border);
+}
+
+.policy {
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.policy h1 {
+    margin-bottom: 1rem;
+}
+
+.policy p {
+    line-height: 1.7;
 }
 
 #disqus_thread {
