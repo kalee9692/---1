@@ -40,6 +40,9 @@ function setPreviewState({ showVideo, showImage }) {
 
 async function loadModel() {
     updateStatus('모델 로딩 중...');
+    if (!window.tmImage) {
+        throw new Error('Teachable Machine library not loaded');
+    }
     model = await tmImage.load(`${MODEL_URL}model.json`, `${MODEL_URL}metadata.json`);
     updateStatus('준비 완료! 사진을 올려보세요.');
 }
@@ -138,5 +141,5 @@ analyzeButton.addEventListener('click', async () => {
 });
 
 loadModel().catch(() => {
-    updateStatus('모델 로딩에 실패했어요. 잠시 후 다시 시도해 주세요.');
+    updateStatus('모델 로딩에 실패했어요. 새로고침 후 다시 시도해 주세요.');
 });
